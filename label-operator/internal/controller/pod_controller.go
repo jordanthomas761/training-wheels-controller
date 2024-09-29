@@ -29,7 +29,7 @@ import (
 
 const (
 	addPodNameLabelAnnotation = "padok.fr/add-pod-name-label"
-	podNameLabel              = "padok.fr/pod-name"
+	podNameLabel              = "biwbass.xyz/pod-name"
 )
 
 // PodReconciler reconciles a Pod object
@@ -90,6 +90,23 @@ func (r *PodReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.R
 		// If the label should not be set but is, remove it.
 		delete(pod.Labels, podNameLabel)
 		log.Info("removing label")
+	}
+
+	/*
+	   Step 2: Update the Pod in the Kubernetes API.
+	*/
+
+	if err := r.Update(ctx, &pod); err != nil {
+		if apierrors.IsConflict(err) {
+			// The Pod has been updated since we read it.
+			// Requeue the Pod to try to reconciliate again.
+			return ctrl.Result{Requeue: true}, nil
+		}
+		if apierrors.IsNotFound(err) {
+			// The Pod has been deleted since we read it.
+			// Requeue the Pod to try to reconciliate again.
+			return ctrl.Result{Requeue: true}, nil
+		}
 	}
 
 	return ctrl.Result{}, nil
