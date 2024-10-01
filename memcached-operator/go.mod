@@ -1,4 +1,4 @@
-module github.com/jordanthomas761/training-wheels-controller
+module github.com/jordanthomas761/training-wheels-controller/memcached-operator
 
 go 1.21
 

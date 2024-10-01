@@ -32,7 +32,7 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	cachev1 "github.com/jordanthomas761/training-wheels-controller/api/v1"
+	cachev1 "github.com/jordanthomas761/training-wheels-controller/memcached-operator/api/v1"
 	//+kubebuilder:scaffold:imports
 )
 
