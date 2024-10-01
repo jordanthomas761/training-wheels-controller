@@ -1,0 +1,9 @@
+apiVersion: page.biwbass.xyz/v1
+kind: Site
+metadata:
+  labels:
+    app.kubernetes.io/name: update-webpage
+    app.kubernetes.io/managed-by: kustomize
+  name: site-sample
+spec:
+  # TODO(user): Add fields here
