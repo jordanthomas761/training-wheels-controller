@@ -24,7 +24,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/jordanthomas761/training-wheels-controller/test/utils"
+	"github.com/jordanthomas761/training-wheels-controller/memcached-operator/test/utils"
 )
 
 const namespace = "memcached-operator-system"
